@@ -3,7 +3,7 @@
  * Plugin Name: Ncloud Outbound Mailer
  * Plugin URI: https://wordpress.org/plugins/ncloud-outbound-mailer/
  * Description: Send WordPress emails through Ncloud Cloud Outbound Mailer API
- * Version: 1.0.0
+ * Version: 1.0.1
  * Requires at least: 5.6
  * Requires PHP: 7.4
  * Author: Design Arete
@@ -25,7 +25,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 // Plugin constants.
-define( 'NCLOUD_MAILER_VERSION', '1.0.0' );
+define( 'NCLOUD_MAILER_VERSION', '1.0.1' );
 define( 'NCLOUD_MAILER_PLUGIN_FILE', __FILE__ );
 define( 'NCLOUD_MAILER_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
 define( 'NCLOUD_MAILER_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
@@ -47,7 +47,18 @@ if ( file_exists( NCLOUD_MAILER_PLUGIN_DIR . 'vendor/autoload.php' ) ) {
             }
 
             $relative_class = substr( $class, $len );
-            $file           = $base_dir . 'class-' . strtolower( str_replace( array( '\\', '_' ), array( '/', '-' ), $relative_class ) ) . '.php';
+
+            // Split namespace and class name.
+            $parts      = explode( '\\', $relative_class );
+            $class_name = array_pop( $parts );
+            $subdir     = implode( '/', $parts );
+
+            // Build the file path: subdirectory stays as-is, class name gets WordPress prefix.
+            $file = $base_dir;
+            if ( ! empty( $subdir ) ) {
+                $file .= $subdir . '/';
+            }
+            $file .= 'class-' . strtolower( str_replace( '_', '-', $class_name ) ) . '.php';
 
             if ( file_exists( $file ) ) {
                 require $file;
@@ -124,6 +135,13 @@ final class Plugin {
      * Initialize the plugin.
      */
     public function init(): void {
+        // Load text domain for translations.
+        load_plugin_textdomain(
+            'ncloud-outbound-mailer',
+            false,
+            dirname( NCLOUD_MAILER_PLUGIN_BASENAME ) . '/languages'
+        );
+
         // Initialize API client.
         $this->api_client = new API\Client();
 

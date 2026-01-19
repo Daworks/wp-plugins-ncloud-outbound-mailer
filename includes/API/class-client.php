@@ -178,8 +178,9 @@ class Client {
         $result        = json_decode( $response_body, true );
 
         if ( 201 !== $response_code && 200 !== $response_code ) {
-            $error_message = $result['errorMessage'] ?? __( 'Unknown error occurred.', 'ncloud-outbound-mailer' );
-            $error_code    = $result['error']['errorCode'] ?? 'ncloud_api_error';
+            // Ncloud API error format: {"error":{"code":"77102","message":"..."}}
+            $error_message = $result['error']['message'] ?? __( 'Unknown error occurred.', 'ncloud-outbound-mailer' );
+            $error_code    = $result['error']['code'] ?? 'ncloud_api_error';
 
             $error = new WP_Error( $error_code, $error_message, $result );
 
@@ -207,9 +208,13 @@ class Client {
      * @return array Formatted mail body.
      */
     private function prepare_mail_body( array $mail_data ): array {
+        // Use empty() check instead of ?? to handle empty strings.
+        $sender_address = ! empty( $mail_data['from'] ) ? $mail_data['from'] : $this->get_sender_address();
+        $sender_name    = ! empty( $mail_data['from_name'] ) ? $mail_data['from_name'] : $this->get_sender_name();
+
         $body = array(
-            'senderAddress' => $mail_data['from'] ?? $this->get_sender_address(),
-            'senderName'    => $mail_data['from_name'] ?? $this->get_sender_name(),
+            'senderAddress' => $sender_address,
+            'senderName'    => $sender_name,
             'title'         => $mail_data['subject'] ?? '',
             'body'          => $mail_data['message'] ?? '',
             'individual'    => true,
@@ -290,12 +295,13 @@ class Client {
             );
         }
 
-        // Use a simple API call to test connection.
-        // We'll try to get mail list (which requires valid credentials).
+        // Test connection by sending empty POST to /mails endpoint.
+        // If auth succeeds: 400 (data validation error).
+        // If auth fails: 401/403/404.
         $uri       = '/api/v1/mails';
         $timestamp = Signature::get_timestamp();
         $signature = Signature::generate(
-            'GET',
+            'POST',
             $uri,
             $timestamp,
             $this->settings['access_key'],
@@ -303,15 +309,17 @@ class Client {
         );
 
         $headers = array(
+            'Content-Type'             => 'application/json',
             'x-ncp-apigw-timestamp'    => $timestamp,
             'x-ncp-iam-access-key'     => $this->settings['access_key'],
             'x-ncp-apigw-signature-v2' => $signature,
         );
 
-        $response = wp_remote_get(
-            $this->get_endpoint() . '/mails?pageSize=1',
+        $response = wp_remote_post(
+            $this->get_endpoint() . '/mails',
             array(
                 'headers' => $headers,
+                'body'    => '{}',
                 'timeout' => 15,
             )
         );
@@ -321,20 +329,34 @@ class Client {
         }
 
         $response_code = wp_remote_retrieve_response_code( $response );
-
-        if ( 200 === $response_code ) {
-            return array(
-                'success' => true,
-                'message' => __( 'API connection successful.', 'ncloud-outbound-mailer' ),
-            );
-        }
-
         $response_body = wp_remote_retrieve_body( $response );
         $result        = json_decode( $response_body, true );
 
+        // 400 with specific error codes means auth succeeded but data validation failed.
+        // This confirms the API credentials are valid.
+        if ( 400 === $response_code && isset( $result['error']['code'] ) ) {
+            $error_code = $result['error']['code'];
+            // 77102 = validation error (missing required fields).
+            if ( in_array( $error_code, array( '77102', '77103' ), true ) ) {
+                return array(
+                    'success' => true,
+                    'message' => __( 'API connection successful.', 'ncloud-outbound-mailer' ),
+                );
+            }
+        }
+
+        // 401/403/404 or other errors indicate auth failure.
+        if ( 401 === $response_code || 403 === $response_code || 404 === $response_code ) {
+            return new WP_Error(
+                'auth_failed',
+                __( 'API authentication failed. Please check your credentials.', 'ncloud-outbound-mailer' ),
+                $result
+            );
+        }
+
         return new WP_Error(
             'api_error',
-            $result['errorMessage'] ?? __( 'API connection failed.', 'ncloud-outbound-mailer' ),
+            $result['error']['message'] ?? __( 'API connection failed.', 'ncloud-outbound-mailer' ),
             $result
         );
     }

@@ -5,7 +5,7 @@ Tags: email, smtp, ncloud, naver cloud, mail
 Requires at least: 5.6
 Tested up to: 6.9
 Requires PHP: 7.4
-Stable tag: 1.0.0
+Stable tag: 1.0.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -142,6 +142,11 @@ By default, if the Ncloud API fails, the email will not be sent. You can use the
 
 == Changelog ==
 
+= 1.0.1 =
+* Add Korean (ko_KR) translation
+* Add load_plugin_textdomain for i18n support
+* Update translation strings in POT file
+
 = 1.0.0 =
 * Initial release
 * Basic email sending through Ncloud API
@@ -186,3 +191,39 @@ Fires after successful email sending.
 
 **ncloud_mailer_error**
 Fires when an error occurs during email sending.
+
+= Debugging =
+
+**Email Logs**
+
+The plugin stores the last 100 email logs in a WordPress transient (`ncloud_mailer_logs`). You can retrieve logs programmatically:
+
+`$logs = get_transient( 'ncloud_mailer_logs' );
+foreach ( $logs as $log ) {
+    echo $log['time'] . ' - ' . $log['status'] . ' - ' . $log['subject'];
+}`
+
+Each log entry contains:
+* `time` - Timestamp of the email
+* `status` - 'success' or 'error'
+* `to` - Recipient email addresses
+* `subject` - Email subject
+* `request_id` - Ncloud request ID (success only)
+* `code` - Error code (error only)
+* `message` - Error message (error only)
+
+**WordPress Debug Log**
+
+When `WP_DEBUG` is enabled, errors are also logged to `wp-content/debug.log`:
+
+`// In wp-config.php
+define( 'WP_DEBUG', true );
+define( 'WP_DEBUG_LOG', true );`
+
+Log format: `[Ncloud Mailer Error] {code}: {message} (To: {recipients}, Subject: {subject})`
+
+**Disabling Logs**
+
+To disable logging entirely:
+
+`add_filter( 'ncloud_mailer_enable_logging', '__return_false' );`

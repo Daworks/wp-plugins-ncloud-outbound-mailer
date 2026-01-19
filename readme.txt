@@ -1,5 +1,6 @@
 === Ncloud Outbound Mailer ===
-Contributors: developer
+Contributors: designarete
+Donate link: https://daworks.io
 Tags: email, smtp, ncloud, naver cloud, mail
 Requires at least: 5.6
 Tested up to: 6.4
@@ -9,6 +10,8 @@ License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
 Send WordPress emails through Ncloud Cloud Outbound Mailer API.
+
+Developed by [Design Arete](https://daworks.io) - Professional WordPress Development.
 
 == Description ==
 

@@ -1,19 +1,20 @@
 <?php
 /**
  * Plugin Name: Ncloud Outbound Mailer
- * Plugin URI: https://github.com/developer/ncloud-outbound-mailer
+ * Plugin URI: https://github.com/Daworks/wp-plugins-ncloud-outbound-mailer
  * Description: Send WordPress emails through Ncloud Cloud Outbound Mailer API
  * Version: 1.0.0
  * Requires at least: 5.6
  * Requires PHP: 7.4
- * Author: Developer
- * Author URI: https://example.com
+ * Author: Design Arete
+ * Author URI: https://daworks.io
  * License: GPL v2 or later
  * License URI: https://www.gnu.org/licenses/gpl-2.0.html
  * Text Domain: ncloud-outbound-mailer
  * Domain Path: /languages
  *
  * @package NcloudMailer
+ * @copyright 2024 Design Arete
  */
 
 namespace NcloudMailer;

@@ -1,5 +1,9 @@
 # Ncloud Outbound Mailer for WordPress
 
+[![License: GPL v2](https://img.shields.io/badge/License-GPL%20v2-blue.svg)](https://www.gnu.org/licenses/gpl-2.0)
+[![PHP Version](https://img.shields.io/badge/PHP-7.4%2B-purple.svg)](https://php.net)
+[![WordPress](https://img.shields.io/badge/WordPress-5.6%2B-blue.svg)](https://wordpress.org)
+
 [English](#english) | [한국어](#한국어)
 
 ---
@@ -7,6 +11,8 @@
 ## English
 
 Send WordPress emails through Ncloud Cloud Outbound Mailer API.
+
+**Developed by [Design Arete](https://daworks.io)** - Professional WordPress Development
 
 ### Features
 
@@ -91,6 +97,8 @@ DMARC provides instructions for handling authentication failures:
 ## 한국어
 
 Ncloud Cloud Outbound Mailer API를 통해 WordPress 이메일을 발송하는 플러그인입니다.
+
+**개발: [Design Arete](https://daworks.io)** - 전문 WordPress 개발
 
 ### 주요 기능
 
@@ -264,3 +272,13 @@ add_filter( 'ncloud_mailer_enable_logging', '__return_false' );
 ### 라이선스
 
 GPL v2 or later
+
+---
+
+## Author / 개발자
+
+**Design Arete**
+- Website: [https://daworks.io](https://daworks.io)
+- GitHub: [https://github.com/Daworks](https://github.com/Daworks)
+
+Copyright (c) 2024 Design Arete. All rights reserved.

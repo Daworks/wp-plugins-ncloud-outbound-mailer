@@ -1,8 +1,11 @@
 # Ncloud Outbound Mailer for WordPress
 
+[![WordPress Plugin](https://img.shields.io/badge/WordPress.org-Plugin-blue.svg)](https://wordpress.org/plugins/ncloud-outbound-mailer/)
 [![License: GPL v2](https://img.shields.io/badge/License-GPL%20v2-blue.svg)](https://www.gnu.org/licenses/gpl-2.0)
 [![PHP Version](https://img.shields.io/badge/PHP-7.4%2B-purple.svg)](https://php.net)
 [![WordPress](https://img.shields.io/badge/WordPress-5.6%2B-blue.svg)](https://wordpress.org)
+
+**[WordPress.org Plugin Page](https://wordpress.org/plugins/ncloud-outbound-mailer/)** | [GitHub](https://github.com/Daworks/wp-plugins-ncloud-outbound-mailer)
 
 [English](#english) | [한국어](#한국어)
 

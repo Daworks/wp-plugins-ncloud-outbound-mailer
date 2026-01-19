@@ -1,7 +1,7 @@
 <?php
 /**
  * Plugin Name: Ncloud Outbound Mailer
- * Plugin URI: https://github.com/Daworks/wp-plugins-ncloud-outbound-mailer
+ * Plugin URI: https://wordpress.org/plugins/ncloud-outbound-mailer/
  * Description: Send WordPress emails through Ncloud Cloud Outbound Mailer API
  * Version: 1.0.0
  * Requires at least: 5.6

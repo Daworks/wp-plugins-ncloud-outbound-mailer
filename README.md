@@ -95,13 +95,26 @@ DMARC provides instructions for handling authentication failures:
 
 > **Note**: DNS propagation may take 24-48 hours. Status will show "인증 완료" when verified.
 
+### Changelog
+
+#### 1.0.1
+- Add Korean (ko_KR) translation support
+- Add load_plugin_textdomain for internationalization (i18n)
+- Update translation strings in POT template file
+
+#### 1.0.0
+- Initial release
+- Basic email sending through Ncloud API
+- Admin settings page
+- Connection test and test email features
+- Email logging
+
 ---
 
 ## 한국어
 
 Ncloud Cloud Outbound Mailer API를 통해 WordPress 이메일을 발송하는 플러그인입니다.
 
-**개발: [Design Arete](https://daworks.io)** - 전문 WordPress 개발
 
 ### 주요 기능
 
@@ -264,6 +277,11 @@ add_filter( 'ncloud_mailer_enable_logging', '__return_false' );
 이메일 발송 오류 시 실행됩니다.
 
 ### 변경 이력
+
+#### 1.0.1
+- 한국어(ko_KR) 번역 지원 추가
+- 국제화(i18n)를 위한 load_plugin_textdomain 추가
+- POT 템플릿 파일의 번역 문자열 업데이트
 
 #### 1.0.0
 - 최초 릴리스

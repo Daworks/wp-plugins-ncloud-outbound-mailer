@@ -1,5 +1,6 @@
 .claude
 .claudedocs
+.env
 .idea/
 vendor/
 node_modules/

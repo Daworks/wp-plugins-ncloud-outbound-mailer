@@ -20,8 +20,23 @@ WordPress plugin for sending emails through Ncloud Cloud Outbound Mailer API.
 
 ### SVN Repository
 - URL: `https://plugins.svn.wordpress.org/ncloud-outbound-mailer`
-- Username: `dhlee7`
-- Password: `svn_rsZPTbwgK61ejwT6HXdKLXDDZjONncq75a3c78d7`
+
+### Credentials Setup
+SVN credentials are loaded from environment variables for security.
+
+**Option 1: Create `.env` file** (recommended)
+```bash
+cp .env.example .env
+# Edit .env with your credentials
+```
+
+**Option 2: Export environment variables**
+```bash
+export SVN_USERNAME='your_username'
+export SVN_PASSWORD='your_svn_password'
+```
+
+> ⚠️ **Note**: `.env` file is in `.gitignore` and will NOT be committed.
 
 ### SVN Structure
 ```
@@ -48,17 +63,20 @@ ncloud-outbound-mailer/
 ### Manual SVN Commands
 ```bash
 # Checkout repository
-svn checkout https://plugins.svn.wordpress.org/ncloud-outbound-mailer svn-repo --username dhlee7 --password svn_rsZPTbwgK61ejwT6HXdKLXDDZjONncq75a3c78d7
+svn checkout https://plugins.svn.wordpress.org/ncloud-outbound-mailer svn-repo \
+    --username "$SVN_USERNAME" --password "$SVN_PASSWORD"
 
 # Update trunk
 cd svn-repo/trunk
 # ... copy files ...
 svn add --force .
-svn commit -m "Update to version X.X.X" --username dhlee7 --password svn_rsZPTbwgK61ejwT6HXdKLXDDZjONncq75a3c78d7
+svn commit -m "Update to version X.X.X" \
+    --username "$SVN_USERNAME" --password "$SVN_PASSWORD"
 
 # Create tag
 svn copy trunk tags/X.X.X
-svn commit -m "Tag version X.X.X" --username dhlee7 --password svn_rsZPTbwgK61ejwT6HXdKLXDDZjONncq75a3c78d7
+svn commit -m "Tag version X.X.X" \
+    --username "$SVN_USERNAME" --password "$SVN_PASSWORD"
 ```
 
 ## File Structure

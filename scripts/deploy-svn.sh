@@ -8,6 +8,13 @@
 
 set -e
 
+# Load .env file if exists
+if [ -f ".env" ]; then
+    export $(grep -v '^#' .env | xargs)
+elif [ -f "../.env" ]; then
+    export $(grep -v '^#' ../.env | xargs)
+fi
+
 # Colors
 RED='\033[0;31m'
 GREEN='\033[0;32m'
@@ -17,8 +24,20 @@ NC='\033[0m'
 # Configuration
 PLUGIN_SLUG="ncloud-outbound-mailer"
 SVN_URL="https://plugins.svn.wordpress.org/${PLUGIN_SLUG}"
-SVN_USERNAME="dhlee7"
-SVN_PASSWORD="svn_rsZPTbwgK61ejwT6HXdKLXDDZjONncq75a3c78d7"
+
+# Load credentials from environment variables
+if [ -z "$SVN_USERNAME" ] || [ -z "$SVN_PASSWORD" ]; then
+    echo -e "${RED}Error: SVN credentials not set${NC}"
+    echo ""
+    echo "Please set environment variables:"
+    echo "  export SVN_USERNAME='your_username'"
+    echo "  export SVN_PASSWORD='your_password'"
+    echo ""
+    echo "Or create a .env file in the project root:"
+    echo "  SVN_USERNAME=your_username"
+    echo "  SVN_PASSWORD=your_password"
+    exit 1
+fi
 
 # Get version from plugin file
 VERSION=$(grep "Version:" ncloud-outbound-mailer.php | head -1 | awk '{print $3}')

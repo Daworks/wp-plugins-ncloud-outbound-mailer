@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<phpunit
+    bootstrap="tests/bootstrap.php"
+    colors="true"
+    verbose="true"
+    stopOnFailure="false"
+    beStrictAboutTestsThatDoNotTestAnything="true"
+    beStrictAboutOutputDuringTests="true"
+>
+    <testsuites>
+        <testsuite name="Unit">
+            <directory suffix="Test.php">tests/Unit</directory>
+        </testsuite>
+    </testsuites>
+
+    <coverage processUncoveredFiles="true">
+        <include>
+            <directory suffix=".php">includes</directory>
+        </include>
+    </coverage>
+
+    <php>
+        <const name="ABSPATH" value="/tmp/wordpress/"/>
+        <const name="NCLOUD_MAILER_VERSION" value="1.0.0"/>
+        <const name="NCLOUD_MAILER_PLUGIN_DIR" value="./"/>
+        <const name="NCLOUD_MAILER_PLUGIN_URL" value="http://example.com/wp-content/plugins/ncloud-outbound-mailer/"/>
+    </php>
+</phpunit>

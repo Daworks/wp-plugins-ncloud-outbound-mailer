@@ -1,0 +1,218 @@
+<?php
+/**
+ * Plugin Name: Ncloud Outbound Mailer
+ * Plugin URI: https://github.com/developer/ncloud-outbound-mailer
+ * Description: Send WordPress emails through Ncloud Cloud Outbound Mailer API
+ * Version: 1.0.0
+ * Requires at least: 5.6
+ * Requires PHP: 7.4
+ * Author: Developer
+ * Author URI: https://example.com
+ * License: GPL v2 or later
+ * License URI: https://www.gnu.org/licenses/gpl-2.0.html
+ * Text Domain: ncloud-outbound-mailer
+ * Domain Path: /languages
+ *
+ * @package NcloudMailer
+ */
+
+namespace NcloudMailer;
+
+// Exit if accessed directly.
+if ( ! defined( 'ABSPATH' ) ) {
+    exit;
+}
+
+// Plugin constants.
+define( 'NCLOUD_MAILER_VERSION', '1.0.0' );
+define( 'NCLOUD_MAILER_PLUGIN_FILE', __FILE__ );
+define( 'NCLOUD_MAILER_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
+define( 'NCLOUD_MAILER_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
+define( 'NCLOUD_MAILER_PLUGIN_BASENAME', plugin_basename( __FILE__ ) );
+
+// Autoloader.
+if ( file_exists( NCLOUD_MAILER_PLUGIN_DIR . 'vendor/autoload.php' ) ) {
+    require_once NCLOUD_MAILER_PLUGIN_DIR . 'vendor/autoload.php';
+} else {
+    // Manual autoloader for when composer autoload is not available.
+    spl_autoload_register(
+        function ( $class ) {
+            $prefix   = 'NcloudMailer\\';
+            $base_dir = NCLOUD_MAILER_PLUGIN_DIR . 'includes/';
+
+            $len = strlen( $prefix );
+            if ( strncmp( $prefix, $class, $len ) !== 0 ) {
+                return;
+            }
+
+            $relative_class = substr( $class, $len );
+            $file           = $base_dir . 'class-' . strtolower( str_replace( array( '\\', '_' ), array( '/', '-' ), $relative_class ) ) . '.php';
+
+            if ( file_exists( $file ) ) {
+                require $file;
+            }
+        }
+    );
+}
+
+/**
+ * Main plugin class.
+ */
+final class Plugin {
+
+    /**
+     * Single instance of the class.
+     *
+     * @var Plugin|null
+     */
+    private static $instance = null;
+
+    /**
+     * API client instance.
+     *
+     * @var API\Client|null
+     */
+    private $api_client = null;
+
+    /**
+     * Mail handler instance.
+     *
+     * @var Mail_Handler|null
+     */
+    private $mail_handler = null;
+
+    /**
+     * Admin instance.
+     *
+     * @var Admin\Settings|null
+     */
+    private $admin = null;
+
+    /**
+     * Get single instance of the class.
+     *
+     * @return Plugin
+     */
+    public static function get_instance(): Plugin {
+        if ( null === self::$instance ) {
+            self::$instance = new self();
+        }
+        return self::$instance;
+    }
+
+    /**
+     * Constructor.
+     */
+    private function __construct() {
+        $this->init_hooks();
+    }
+
+    /**
+     * Initialize hooks.
+     */
+    private function init_hooks(): void {
+        // Load text domain.
+        add_action( 'init', array( $this, 'load_textdomain' ) );
+
+        // Initialize plugin after plugins loaded.
+        add_action( 'plugins_loaded', array( $this, 'init' ) );
+
+        // Activation/Deactivation hooks.
+        register_activation_hook( NCLOUD_MAILER_PLUGIN_FILE, array( $this, 'activate' ) );
+        register_deactivation_hook( NCLOUD_MAILER_PLUGIN_FILE, array( $this, 'deactivate' ) );
+    }
+
+    /**
+     * Load plugin text domain.
+     */
+    public function load_textdomain(): void {
+        load_plugin_textdomain(
+            'ncloud-outbound-mailer',
+            false,
+            dirname( NCLOUD_MAILER_PLUGIN_BASENAME ) . '/languages'
+        );
+    }
+
+    /**
+     * Initialize the plugin.
+     */
+    public function init(): void {
+        // Initialize API client.
+        $this->api_client = new API\Client();
+
+        // Initialize mail handler.
+        $this->mail_handler = new Mail_Handler( $this->api_client );
+
+        // Initialize admin if in admin area.
+        if ( is_admin() ) {
+            $this->admin = new Admin\Settings( $this->api_client );
+        }
+
+        /**
+         * Fires after the plugin is fully initialized.
+         *
+         * @param Plugin $plugin The plugin instance.
+         */
+        do_action( 'ncloud_mailer_init', $this );
+    }
+
+    /**
+     * Plugin activation.
+     */
+    public function activate(): void {
+        // Set default options.
+        $default_options = array(
+            'access_key'     => '',
+            'secret_key'     => '',
+            'sender_address' => '',
+            'sender_name'    => get_bloginfo( 'name' ),
+            'region'         => 'KR',
+            'enabled'        => false,
+        );
+
+        if ( false === get_option( 'ncloud_mailer_settings' ) ) {
+            add_option( 'ncloud_mailer_settings', $default_options );
+        }
+
+        // Flush rewrite rules.
+        flush_rewrite_rules();
+    }
+
+    /**
+     * Plugin deactivation.
+     */
+    public function deactivate(): void {
+        // Flush rewrite rules.
+        flush_rewrite_rules();
+    }
+
+    /**
+     * Get the API client.
+     *
+     * @return API\Client|null
+     */
+    public function get_api_client(): ?API\Client {
+        return $this->api_client;
+    }
+
+    /**
+     * Get the mail handler.
+     *
+     * @return Mail_Handler|null
+     */
+    public function get_mail_handler(): ?Mail_Handler {
+        return $this->mail_handler;
+    }
+}
+
+/**
+ * Get the plugin instance.
+ *
+ * @return Plugin
+ */
+function ncloud_mailer(): Plugin {
+    return Plugin::get_instance();
+}
+
+// Initialize the plugin.
+ncloud_mailer();

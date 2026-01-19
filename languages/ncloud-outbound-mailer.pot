@@ -1,0 +1,165 @@
+# Copyright (C) 2024 Developer
+# This file is distributed under the GPL v2 or later.
+msgid ""
+msgstr ""
+"Project-Id-Version: Ncloud Outbound Mailer 1.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-01-01 00:00+0000\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"PO-Revision-Date: 2024-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+
+#: includes/Admin/class-settings.php
+msgid "Ncloud Mailer Settings"
+msgstr ""
+
+#: includes/Admin/class-settings.php
+msgid "Ncloud Mailer"
+msgstr ""
+
+#: includes/Admin/class-settings.php
+msgid "API Configuration"
+msgstr ""
+
+#: includes/Admin/class-settings.php
+msgid "Enable Ncloud Mailer"
+msgstr ""
+
+#: includes/Admin/class-settings.php
+msgid "Enable sending emails through Ncloud Cloud Outbound Mailer."
+msgstr ""
+
+#: includes/Admin/class-settings.php
+msgid "Region"
+msgstr ""
+
+#: includes/Admin/class-settings.php
+msgid "Korea (KR)"
+msgstr ""
+
+#: includes/Admin/class-settings.php
+msgid "Singapore (SGN)"
+msgstr ""
+
+#: includes/Admin/class-settings.php
+msgid "Japan (JPN)"
+msgstr ""
+
+#: includes/Admin/class-settings.php
+msgid "Access Key"
+msgstr ""
+
+#: includes/Admin/class-settings.php
+msgid "Your Ncloud API Access Key."
+msgstr ""
+
+#: includes/Admin/class-settings.php
+msgid "Secret Key"
+msgstr ""
+
+#: includes/Admin/class-settings.php
+msgid "Your Ncloud API Secret Key."
+msgstr ""
+
+#: includes/Admin/class-settings.php
+msgid "Sender Settings"
+msgstr ""
+
+#: includes/Admin/class-settings.php
+msgid "Sender Email Address"
+msgstr ""
+
+#: includes/Admin/class-settings.php
+msgid "The email address that will appear as the sender."
+msgstr ""
+
+#: includes/Admin/class-settings.php
+msgid "Sender Name"
+msgstr ""
+
+#: includes/Admin/class-settings.php
+msgid "The name that will appear as the sender."
+msgstr ""
+
+#: includes/Admin/class-settings.php
+msgid "Save Settings"
+msgstr ""
+
+#: includes/Admin/class-settings.php
+msgid "Test Connection & Email"
+msgstr ""
+
+#: includes/Admin/class-settings.php
+msgid "API Connection Test"
+msgstr ""
+
+#: includes/Admin/class-settings.php
+msgid "Test Connection"
+msgstr ""
+
+#: includes/Admin/class-settings.php
+msgid "Send Test Email"
+msgstr ""
+
+#: includes/Admin/class-settings.php
+msgid "Enter test email address"
+msgstr ""
+
+#: includes/Admin/class-settings.php
+msgid "Recent Email Logs"
+msgstr ""
+
+#: includes/Admin/class-settings.php
+msgid "No email logs yet."
+msgstr ""
+
+#: includes/Admin/class-settings.php
+msgid "Time"
+msgstr ""
+
+#: includes/Admin/class-settings.php
+msgid "Status"
+msgstr ""
+
+#: includes/Admin/class-settings.php
+msgid "To"
+msgstr ""
+
+#: includes/Admin/class-settings.php
+msgid "Subject"
+msgstr ""
+
+#: includes/Admin/class-settings.php
+msgid "Details"
+msgstr ""
+
+#: includes/Admin/class-settings.php
+msgid "Sent"
+msgstr ""
+
+#: includes/Admin/class-settings.php
+msgid "Failed"
+msgstr ""
+
+#: includes/API/class-client.php
+msgid "Ncloud Mailer is not properly configured."
+msgstr ""
+
+#: includes/API/class-client.php
+msgid "Unknown error occurred."
+msgstr ""
+
+#: includes/API/class-client.php
+msgid "API credentials are not configured."
+msgstr ""
+
+#: includes/API/class-client.php
+msgid "API connection successful."
+msgstr ""
+
+#: includes/API/class-client.php
+msgid "API connection failed."
+msgstr ""

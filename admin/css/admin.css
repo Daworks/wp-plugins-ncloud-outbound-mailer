@@ -1,0 +1,105 @@
+/**
+ * Ncloud Mailer Admin Styles
+ *
+ * @package NcloudMailer
+ */
+
+.ncloud-mailer-wrap {
+    max-width: 800px;
+}
+
+.ncloud-mailer-wrap h1 {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.ncloud-mailer-wrap h1::before {
+    content: "";
+    display: inline-block;
+    width: 32px;
+    height: 32px;
+    background: linear-gradient(135deg, #03c75a 0%, #00a550 100%);
+    border-radius: 4px;
+}
+
+/* Result messages */
+.ncloud-result {
+    display: inline-block;
+    margin-left: 10px;
+    padding: 5px 10px;
+    border-radius: 3px;
+    font-weight: 500;
+}
+
+.ncloud-result.success {
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+
+.ncloud-result.error {
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}
+
+.ncloud-result.loading {
+    background-color: #fff3cd;
+    color: #856404;
+    border: 1px solid #ffeeba;
+}
+
+/* Status badges in logs */
+.ncloud-status-success {
+    color: #155724;
+    font-weight: 500;
+}
+
+.ncloud-status-error {
+    color: #721c24;
+    font-weight: 500;
+}
+
+/* Test section */
+.ncloud-mailer-test-section input[type="email"] {
+    margin-right: 10px;
+}
+
+/* Form table adjustments */
+.ncloud-mailer-wrap .form-table th {
+    width: 200px;
+}
+
+/* Logs table */
+.ncloud-mailer-wrap .wp-list-table {
+    margin-top: 15px;
+}
+
+.ncloud-mailer-wrap .wp-list-table td {
+    vertical-align: middle;
+}
+
+/* Password field toggle (future enhancement) */
+.password-toggle {
+    cursor: pointer;
+    margin-left: 5px;
+}
+
+/* Responsive adjustments */
+@media screen and (max-width: 782px) {
+    .ncloud-mailer-wrap .form-table th {
+        width: auto;
+    }
+
+    .ncloud-mailer-test-section input[type="email"] {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    .ncloud-result {
+        display: block;
+        margin-left: 0;
+        margin-top: 10px;
+    }
+}

@@ -35,8 +35,56 @@ Send WordPress emails through Ncloud Cloud Outbound Mailer API.
 
 1. Sign up for [Ncloud Cloud Outbound Mailer](https://www.ncloud.com/product/applicationService/cloudOutboundMailer)
 2. Get your API credentials from [Ncloud Console](https://console.ncloud.com/)
-3. Enter your Access Key, Secret Key, and sender information
-4. Enable the mailer and test with the test email feature
+3. Register and verify your sending domain (see Domain Setup below)
+4. Enter your Access Key, Secret Key, and sender information
+5. Enable the mailer and test with the test email feature
+
+### Domain Setup
+
+Before sending emails, you must register and verify your domain in Ncloud Console.
+
+#### Step 1: Register Domain
+1. Go to [Ncloud Console](https://console.ncloud.com/) > Cloud Outbound Mailer > Domain Management
+2. Click **"+ 도메인 등록"** (Add Domain)
+3. Enter your domain name (e.g., example.com)
+
+#### Step 2: Domain Verification Token
+Add a TXT record to verify domain ownership:
+
+| DNS Record | Value |
+|------------|-------|
+| Host | `@` |
+| Type | `TXT` |
+| Value | (Copy from "인증 토큰" > "보기") |
+
+#### Step 3: SPF Record
+SPF authorizes Ncloud to send emails on your behalf:
+
+| DNS Record | Value |
+|------------|-------|
+| Host | `@` |
+| Type | `TXT` |
+| Value | `v=spf1 include:_spfblocka.ncloud.com ~all` |
+
+#### Step 4: DKIM Record
+DKIM adds a digital signature to your emails:
+
+| DNS Record | Value |
+|------------|-------|
+| Host | `ncloud._domainkey` |
+| Type | `TXT` |
+| Value | (Copy DKIM public key from console) |
+
+#### Step 5: DMARC Record (Recommended)
+DMARC provides instructions for handling authentication failures:
+
+| DNS Record | Value |
+|------------|-------|
+| Host | `_dmarc` |
+| Type | `TXT` |
+| Value | `v=DMARC1; p=none; rua=mailto:dmarc@yourdomain.com` |
+
+> **Note**: DNS propagation may take 24-48 hours. Status will show "인증 완료" when verified.
 
 ---
 
@@ -71,8 +119,69 @@ Ncloud Cloud Outbound Mailer API를 통해 WordPress 이메일을 발송하는 �
 
 1. [Ncloud Cloud Outbound Mailer](https://www.ncloud.com/product/applicationService/cloudOutboundMailer) 서비스 가입
 2. [Ncloud 콘솔](https://console.ncloud.com/)에서 API 인증키 발급
-3. Access Key, Secret Key, 발신자 정보 입력
-4. 활성화 후 테스트 이메일로 동작 확인
+3. 발신 도메인 등록 및 인증 (아래 도메인 설정 참조)
+4. Access Key, Secret Key, 발신자 정보 입력
+5. 활성화 후 테스트 이메일로 동작 확인
+
+### 도메인 설정
+
+이메일을 발송하기 전에 Ncloud 콘솔에서 도메인을 등록하고 인증해야 합니다.
+
+#### 1단계: 도메인 등록
+1. [Ncloud 콘솔](https://console.ncloud.com/) > Cloud Outbound Mailer > Domain Management 이동
+2. **"+ 도메인 등록"** 버튼 클릭
+3. 도메인명 입력 (예: example.com)
+
+#### 2단계: 도메인 인증 토큰
+도메인 소유권 확인을 위해 TXT 레코드를 추가합니다:
+
+| DNS 설정 | 값 |
+|----------|-----|
+| 호스트 | `@` |
+| 타입 | `TXT` |
+| 값 | (인증 토큰 > "보기"에서 복사) |
+
+#### 3단계: SPF 레코드
+SPF는 Ncloud가 도메인을 대신하여 이메일을 보낼 수 있도록 권한을 부여합니다:
+
+| DNS 설정 | 값 |
+|----------|-----|
+| 호스트 | `@` |
+| 타입 | `TXT` |
+| 값 | `v=spf1 include:_spfblocka.ncloud.com ~all` |
+
+등록 후 콘솔에서 **"사용"** 버튼을 클릭하여 활성화합니다.
+
+#### 4단계: DKIM 레코드
+DKIM은 이메일에 디지털 서명을 추가하여 위변조를 방지합니다:
+
+| DNS 설정 | 값 |
+|----------|-----|
+| 호스트 | `ncloud._domainkey` |
+| 타입 | `TXT` |
+| 값 | (콘솔에서 DKIM 공개키 복사) |
+
+등록 후 콘솔에서 **"사용"** 버튼을 클릭하여 활성화합니다.
+
+#### 5단계: DMARC 레코드 (권장)
+DMARC는 인증 실패 시 이메일 처리 방법을 지정합니다:
+
+| DNS 설정 | 값 |
+|----------|-----|
+| 호스트 | `_dmarc` |
+| 타입 | `TXT` |
+| 값 | `v=DMARC1; p=none; rua=mailto:dmarc@yourdomain.com` |
+
+> **참고**: DNS 전파에 최대 24-48시간이 소요될 수 있습니다. 인증이 완료되면 "인증 완료" 상태가 표시됩니다.
+
+#### DNS 레코드 요약
+
+| 타입 | 호스트 | 값 |
+|------|--------|-----|
+| TXT | @ | (인증 토큰) |
+| TXT | @ | `v=spf1 include:_spfblocka.ncloud.com ~all` |
+| TXT | ncloud._domainkey | (DKIM 공개키) |
+| TXT | _dmarc | `v=DMARC1; p=none; rua=mailto:you@domain.com` |
 
 ### 스크린샷
 

@@ -35,9 +35,77 @@ Ncloud Outbound Mailer allows you to send all WordPress emails through Ncloud Cl
 
 1. Sign up for Ncloud Cloud Outbound Mailer service
 2. Get your API Access Key and Secret Key from Ncloud Console
-3. Go to Settings > Ncloud Mailer in WordPress admin
-4. Enter your API credentials and sender information
-5. Enable the mailer and test with the test email feature
+3. Register and verify your sending domain (see Domain Setup below)
+4. Go to Settings > Ncloud Mailer in WordPress admin
+5. Enter your API credentials and sender information
+6. Enable the mailer and test with the test email feature
+
+= Domain Setup =
+
+Before sending emails, you must register and verify your domain in Ncloud Console.
+
+**Step 1: Register Domain**
+
+1. Go to [Ncloud Console](https://console.ncloud.com/) > Cloud Outbound Mailer > Domain Management
+2. Click "+ 도메인 등록" (Add Domain)
+3. Enter your domain name (e.g., example.com)
+
+**Step 2: Domain Verification Token**
+
+Add a TXT record to verify domain ownership:
+
+1. In Domain Management, click "보기" (View) next to "인증 토큰" (Verification Token)
+2. Copy the verification token value
+3. Add a TXT record to your DNS:
+   * Host: @ (or your domain)
+   * Type: TXT
+   * Value: (paste the verification token)
+4. Click "새로 고침" (Refresh) to verify
+
+**Step 3: SPF Record**
+
+SPF (Sender Policy Framework) authorizes Ncloud to send emails on your behalf:
+
+1. Click "보기" (View) next to "SPF 레코드"
+2. Copy the SPF record value
+3. Add a TXT record to your DNS:
+   * Host: @
+   * Type: TXT
+   * Value: `v=spf1 include:_spfblocka.ncloud.com ~all`
+4. Click "사용" (Enable) to activate SPF
+
+**Step 4: DKIM Record**
+
+DKIM (DomainKeys Identified Mail) adds a digital signature to your emails:
+
+1. Click "보기" (View) next to "DKIM"
+2. Copy the DKIM record value
+3. Add a TXT record to your DNS:
+   * Host: (provided selector, e.g., `ncloud._domainkey`)
+   * Type: TXT
+   * Value: (paste the DKIM public key)
+4. Click "사용" (Enable) to activate DKIM
+
+**Step 5: DMARC Record (Recommended)**
+
+DMARC provides instructions for handling authentication failures:
+
+1. Add a TXT record to your DNS:
+   * Host: `_dmarc`
+   * Type: TXT
+   * Value: `v=DMARC1; p=none; rua=mailto:dmarc@yourdomain.com`
+2. After verification, consider changing policy to `p=quarantine` or `p=reject`
+
+**DNS Record Summary**
+
+| Type | Host | Value |
+| --- | --- | --- |
+| TXT | @ | (Verification Token) |
+| TXT | @ | v=spf1 include:_spfblocka.ncloud.com ~all |
+| TXT | ncloud._domainkey | (DKIM Public Key) |
+| TXT | _dmarc | v=DMARC1; p=none; rua=mailto:you@domain.com |
+
+Note: DNS propagation may take up to 24-48 hours. The verification status will show "인증 완료" (Verified) when complete.
 
 == Installation ==
 

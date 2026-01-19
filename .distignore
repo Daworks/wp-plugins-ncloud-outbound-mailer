@@ -1,0 +1,56 @@
+# Distribution ignore file
+# Files and directories to exclude from the distribution package
+
+# Git
+.git
+.gitignore
+.gitattributes
+
+# GitHub
+.github
+
+# Development
+.claude
+.claudedocs
+.idea
+.vscode
+.editorconfig
+
+# Build tools
+node_modules
+scripts
+build
+dist
+
+# Testing
+tests
+phpunit.xml
+phpunit.xml.dist
+.phpunit.result.cache
+codeception.yml
+
+# CI/CD
+.travis.yml
+.circleci
+.gitlab-ci.yml
+
+# Package managers (dev)
+composer.lock
+package.json
+package-lock.json
+yarn.lock
+
+# Documentation (dev only)
+docs
+CONTRIBUTING.md
+CHANGELOG.md
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Misc
+*.log
+*.bak
+*.swp
+*~

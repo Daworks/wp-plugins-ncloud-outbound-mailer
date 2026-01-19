@@ -3,5 +3,8 @@
 .idea/
 vendor/
 node_modules/
+build/
+dist/
 *.log
 .DS_Store
+.phpunit.result.cache

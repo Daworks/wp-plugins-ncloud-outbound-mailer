@@ -8,8 +8,8 @@
  * Requires PHP: 7.4
  * Author: Design Arete
  * Author URI: https://daworks.io
- * License: GPL v2 or later
- * License URI: https://www.gnu.org/licenses/gpl-2.0.html
+ * License: MIT
+ * License URI: https://opensource.org/licenses/MIT
  * Text Domain: ncloud-outbound-mailer
  * Domain Path: /languages
  *

@@ -1,7 +1,7 @@
 # Ncloud Outbound Mailer for WordPress
 
 [![WordPress Plugin](https://img.shields.io/badge/WordPress.org-Plugin-blue.svg)](https://wordpress.org/plugins/ncloud-outbound-mailer/)
-[![License: GPL v2](https://img.shields.io/badge/License-GPL%20v2-blue.svg)](https://www.gnu.org/licenses/gpl-2.0)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![PHP Version](https://img.shields.io/badge/PHP-7.4%2B-purple.svg)](https://php.net)
 [![WordPress](https://img.shields.io/badge/WordPress-5.6%2B-blue.svg)](https://wordpress.org)
 
@@ -292,7 +292,7 @@ add_filter( 'ncloud_mailer_enable_logging', '__return_false' );
 
 ### 라이선스
 
-GPL v2 or later
+MIT License
 
 ---
 

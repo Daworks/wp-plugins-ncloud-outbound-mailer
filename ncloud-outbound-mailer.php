@@ -112,26 +112,12 @@ final class Plugin {
      * Initialize hooks.
      */
     private function init_hooks(): void {
-        // Load text domain.
-        add_action( 'init', array( $this, 'load_textdomain' ) );
-
         // Initialize plugin after plugins loaded.
         add_action( 'plugins_loaded', array( $this, 'init' ) );
 
         // Activation/Deactivation hooks.
         register_activation_hook( NCLOUD_MAILER_PLUGIN_FILE, array( $this, 'activate' ) );
         register_deactivation_hook( NCLOUD_MAILER_PLUGIN_FILE, array( $this, 'deactivate' ) );
-    }
-
-    /**
-     * Load plugin text domain.
-     */
-    public function load_textdomain(): void {
-        load_plugin_textdomain(
-            'ncloud-outbound-mailer',
-            false,
-            dirname( NCLOUD_MAILER_PLUGIN_BASENAME ) . '/languages'
-        );
     }
 
     /**

@@ -97,6 +97,11 @@ DMARC provides instructions for handling authentication failures:
 
 ### Changelog
 
+#### 1.0.2
+- Change license to MIT
+- Add LICENSE file
+- Add GitHub Wiki documentation
+
 #### 1.0.1
 - Add Korean (ko_KR) translation support
 - Add load_plugin_textdomain for internationalization (i18n)
@@ -277,6 +282,11 @@ add_filter( 'ncloud_mailer_enable_logging', '__return_false' );
 이메일 발송 오류 시 실행됩니다.
 
 ### 변경 이력
+
+#### 1.0.2
+- MIT 라이선스로 변경
+- LICENSE 파일 추가
+- GitHub Wiki 문서 추가
 
 #### 1.0.1
 - 한국어(ko_KR) 번역 지원 추가

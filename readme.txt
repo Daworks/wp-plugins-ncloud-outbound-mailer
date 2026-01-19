@@ -5,7 +5,7 @@ Tags: email, smtp, ncloud, naver cloud, mail
 Requires at least: 5.6
 Tested up to: 6.9
 Requires PHP: 7.4
-Stable tag: 1.0.1
+Stable tag: 1.0.2
 License: MIT
 License URI: https://opensource.org/licenses/MIT
 
@@ -141,6 +141,11 @@ By default, if the Ncloud API fails, the email will not be sent. You can use the
 3. Email logs showing recent send history
 
 == Changelog ==
+
+= 1.0.2 =
+* Change license to MIT
+* Add LICENSE file
+* Add GitHub Wiki documentation
 
 = 1.0.1 =
 * Add Korean (ko_KR) translation

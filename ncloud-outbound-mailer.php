@@ -3,7 +3,7 @@
  * Plugin Name: Ncloud Outbound Mailer
  * Plugin URI: https://wordpress.org/plugins/ncloud-outbound-mailer/
  * Description: Send WordPress emails through Ncloud Cloud Outbound Mailer API
- * Version: 1.0.1
+ * Version: 1.0.2
  * Requires at least: 5.6
  * Requires PHP: 7.4
  * Author: Design Arete
@@ -25,7 +25,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 // Plugin constants.
-define( 'NCLOUD_MAILER_VERSION', '1.0.1' );
+define( 'NCLOUD_MAILER_VERSION', '1.0.2' );
 define( 'NCLOUD_MAILER_PLUGIN_FILE', __FILE__ );
 define( 'NCLOUD_MAILER_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
 define( 'NCLOUD_MAILER_PLUGIN_URL', plugin_dir_url( __FILE__ ) );

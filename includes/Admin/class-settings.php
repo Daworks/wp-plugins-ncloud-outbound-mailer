@@ -66,8 +66,8 @@ class Settings {
      */
     public function add_admin_menu(): void {
         add_options_page(
-            __( 'Ncloud Mailer Settings', 'ncloud-outbound-mailer' ),
-            __( 'Ncloud Mailer', 'ncloud-outbound-mailer' ),
+            __( 'Ncloud Mailer Settings', 'daworks-outbound-mailer-for-ncloud' ),
+            __( 'Ncloud Mailer', 'daworks-outbound-mailer-for-ncloud' ),
             'manage_options',
             self::PAGE_SLUG,
             array( $this, 'render_settings_page' )
@@ -91,7 +91,7 @@ class Settings {
         // General Settings Section.
         add_settings_section(
             'ncloud_mailer_general',
-            __( 'API Configuration', 'ncloud-outbound-mailer' ),
+            __( 'API Configuration', 'daworks-outbound-mailer-for-ncloud' ),
             array( $this, 'render_section_description' ),
             self::PAGE_SLUG
         );
@@ -99,29 +99,29 @@ class Settings {
         // Enable/Disable.
         add_settings_field(
             'enabled',
-            __( 'Enable Ncloud Mailer', 'ncloud-outbound-mailer' ),
+            __( 'Enable Ncloud Mailer', 'daworks-outbound-mailer-for-ncloud' ),
             array( $this, 'render_checkbox_field' ),
             self::PAGE_SLUG,
             'ncloud_mailer_general',
             array(
                 'label_for'   => 'enabled',
-                'description' => __( 'Enable sending emails through Ncloud Cloud Outbound Mailer.', 'ncloud-outbound-mailer' ),
+                'description' => __( 'Enable sending emails through Ncloud Cloud Outbound Mailer.', 'daworks-outbound-mailer-for-ncloud' ),
             )
         );
 
         // Region.
         add_settings_field(
             'region',
-            __( 'Region', 'ncloud-outbound-mailer' ),
+            __( 'Region', 'daworks-outbound-mailer-for-ncloud' ),
             array( $this, 'render_select_field' ),
             self::PAGE_SLUG,
             'ncloud_mailer_general',
             array(
                 'label_for' => 'region',
                 'options'   => array(
-                    'KR'  => __( 'Korea (KR)', 'ncloud-outbound-mailer' ),
-                    'SGN' => __( 'Singapore (SGN)', 'ncloud-outbound-mailer' ),
-                    'JPN' => __( 'Japan (JPN)', 'ncloud-outbound-mailer' ),
+                    'KR'  => __( 'Korea (KR)', 'daworks-outbound-mailer-for-ncloud' ),
+                    'SGN' => __( 'Singapore (SGN)', 'daworks-outbound-mailer-for-ncloud' ),
+                    'JPN' => __( 'Japan (JPN)', 'daworks-outbound-mailer-for-ncloud' ),
                 ),
             )
         );
@@ -129,34 +129,34 @@ class Settings {
         // Access Key.
         add_settings_field(
             'access_key',
-            __( 'Access Key', 'ncloud-outbound-mailer' ),
+            __( 'Access Key', 'daworks-outbound-mailer-for-ncloud' ),
             array( $this, 'render_text_field' ),
             self::PAGE_SLUG,
             'ncloud_mailer_general',
             array(
                 'label_for'   => 'access_key',
                 'type'        => 'text',
-                'description' => __( 'Your Ncloud API Access Key.', 'ncloud-outbound-mailer' ),
+                'description' => __( 'Your Ncloud API Access Key.', 'daworks-outbound-mailer-for-ncloud' ),
             )
         );
 
         // Secret Key.
         add_settings_field(
             'secret_key',
-            __( 'Secret Key', 'ncloud-outbound-mailer' ),
+            __( 'Secret Key', 'daworks-outbound-mailer-for-ncloud' ),
             array( $this, 'render_password_field' ),
             self::PAGE_SLUG,
             'ncloud_mailer_general',
             array(
                 'label_for'   => 'secret_key',
-                'description' => __( 'Your Ncloud API Secret Key.', 'ncloud-outbound-mailer' ),
+                'description' => __( 'Your Ncloud API Secret Key.', 'daworks-outbound-mailer-for-ncloud' ),
             )
         );
 
         // Sender Settings Section.
         add_settings_section(
             'ncloud_mailer_sender',
-            __( 'Sender Settings', 'ncloud-outbound-mailer' ),
+            __( 'Sender Settings', 'daworks-outbound-mailer-for-ncloud' ),
             null,
             self::PAGE_SLUG
         );
@@ -164,28 +164,28 @@ class Settings {
         // Sender Address.
         add_settings_field(
             'sender_address',
-            __( 'Sender Email Address', 'ncloud-outbound-mailer' ),
+            __( 'Sender Email Address', 'daworks-outbound-mailer-for-ncloud' ),
             array( $this, 'render_text_field' ),
             self::PAGE_SLUG,
             'ncloud_mailer_sender',
             array(
                 'label_for'   => 'sender_address',
                 'type'        => 'email',
-                'description' => __( 'The email address that will appear as the sender.', 'ncloud-outbound-mailer' ),
+                'description' => __( 'The email address that will appear as the sender.', 'daworks-outbound-mailer-for-ncloud' ),
             )
         );
 
         // Sender Name.
         add_settings_field(
             'sender_name',
-            __( 'Sender Name', 'ncloud-outbound-mailer' ),
+            __( 'Sender Name', 'daworks-outbound-mailer-for-ncloud' ),
             array( $this, 'render_text_field' ),
             self::PAGE_SLUG,
             'ncloud_mailer_sender',
             array(
                 'label_for'   => 'sender_name',
                 'type'        => 'text',
-                'description' => __( 'The name that will appear as the sender.', 'ncloud-outbound-mailer' ),
+                'description' => __( 'The name that will appear as the sender.', 'daworks-outbound-mailer-for-ncloud' ),
             )
         );
     }
@@ -222,12 +222,12 @@ class Settings {
                 'ajaxUrl' => admin_url( 'admin-ajax.php' ),
                 'nonce'   => wp_create_nonce( 'ncloud_mailer_admin' ),
                 'i18n'    => array(
-                    'testing'       => __( 'Testing...', 'ncloud-outbound-mailer' ),
-                    'sending'       => __( 'Sending...', 'ncloud-outbound-mailer' ),
-                    'success'       => __( 'Success!', 'ncloud-outbound-mailer' ),
-                    'error'         => __( 'Error:', 'ncloud-outbound-mailer' ),
-                    'testEmail'     => __( 'Test email sent successfully!', 'ncloud-outbound-mailer' ),
-                    'enterEmail'    => __( 'Please enter a test email address.', 'ncloud-outbound-mailer' ),
+                    'testing'       => __( 'Testing...', 'daworks-outbound-mailer-for-ncloud' ),
+                    'sending'       => __( 'Sending...', 'daworks-outbound-mailer-for-ncloud' ),
+                    'success'       => __( 'Success!', 'daworks-outbound-mailer-for-ncloud' ),
+                    'error'         => __( 'Error:', 'daworks-outbound-mailer-for-ncloud' ),
+                    'testEmail'     => __( 'Test email sent successfully!', 'daworks-outbound-mailer-for-ncloud' ),
+                    'enterEmail'    => __( 'Please enter a test email address.', 'daworks-outbound-mailer-for-ncloud' ),
                 ),
             )
         );
@@ -246,7 +246,7 @@ class Settings {
             add_settings_error(
                 'ncloud_mailer_messages',
                 'ncloud_mailer_message',
-                __( 'Settings Saved', 'ncloud-outbound-mailer' ),
+                __( 'Settings Saved', 'daworks-outbound-mailer-for-ncloud' ),
                 'updated'
             );
         }
@@ -261,33 +261,33 @@ class Settings {
                 <?php
                 settings_fields( 'ncloud_mailer_settings_group' );
                 do_settings_sections( self::PAGE_SLUG );
-                submit_button( __( 'Save Settings', 'ncloud-outbound-mailer' ) );
+                submit_button( __( 'Save Settings', 'daworks-outbound-mailer-for-ncloud' ) );
                 ?>
             </form>
 
             <hr>
 
-            <h2><?php esc_html_e( 'Test Connection & Email', 'ncloud-outbound-mailer' ); ?></h2>
+            <h2><?php esc_html_e( 'Test Connection & Email', 'daworks-outbound-mailer-for-ncloud' ); ?></h2>
 
             <table class="form-table ncloud-mailer-test-section">
                 <tr>
-                    <th scope="row"><?php esc_html_e( 'API Connection Test', 'ncloud-outbound-mailer' ); ?></th>
+                    <th scope="row"><?php esc_html_e( 'API Connection Test', 'daworks-outbound-mailer-for-ncloud' ); ?></th>
                     <td>
                         <button type="button" class="button" id="ncloud-test-connection">
-                            <?php esc_html_e( 'Test Connection', 'ncloud-outbound-mailer' ); ?>
+                            <?php esc_html_e( 'Test Connection', 'daworks-outbound-mailer-for-ncloud' ); ?>
                         </button>
                         <span id="ncloud-connection-result" class="ncloud-result"></span>
                     </td>
                 </tr>
                 <tr>
-                    <th scope="row"><?php esc_html_e( 'Send Test Email', 'ncloud-outbound-mailer' ); ?></th>
+                    <th scope="row"><?php esc_html_e( 'Send Test Email', 'daworks-outbound-mailer-for-ncloud' ); ?></th>
                     <td>
                         <input type="email"
                                id="ncloud-test-email-address"
                                class="regular-text"
-                               placeholder="<?php esc_attr_e( 'Enter test email address', 'ncloud-outbound-mailer' ); ?>">
+                               placeholder="<?php esc_attr_e( 'Enter test email address', 'daworks-outbound-mailer-for-ncloud' ); ?>">
                         <button type="button" class="button" id="ncloud-send-test-email">
-                            <?php esc_html_e( 'Send Test Email', 'ncloud-outbound-mailer' ); ?>
+                            <?php esc_html_e( 'Send Test Email', 'daworks-outbound-mailer-for-ncloud' ); ?>
                         </button>
                         <span id="ncloud-test-email-result" class="ncloud-result"></span>
                     </td>
@@ -307,19 +307,19 @@ class Settings {
         $logs = array_reverse( $logs ); // Show newest first.
         ?>
         <hr>
-        <h2><?php esc_html_e( 'Recent Email Logs', 'ncloud-outbound-mailer' ); ?></h2>
+        <h2><?php esc_html_e( 'Recent Email Logs', 'daworks-outbound-mailer-for-ncloud' ); ?></h2>
 
         <?php if ( empty( $logs ) ) : ?>
-            <p><?php esc_html_e( 'No email logs yet.', 'ncloud-outbound-mailer' ); ?></p>
+            <p><?php esc_html_e( 'No email logs yet.', 'daworks-outbound-mailer-for-ncloud' ); ?></p>
         <?php else : ?>
             <table class="wp-list-table widefat fixed striped">
                 <thead>
                     <tr>
-                        <th><?php esc_html_e( 'Time', 'ncloud-outbound-mailer' ); ?></th>
-                        <th><?php esc_html_e( 'Status', 'ncloud-outbound-mailer' ); ?></th>
-                        <th><?php esc_html_e( 'To', 'ncloud-outbound-mailer' ); ?></th>
-                        <th><?php esc_html_e( 'Subject', 'ncloud-outbound-mailer' ); ?></th>
-                        <th><?php esc_html_e( 'Details', 'ncloud-outbound-mailer' ); ?></th>
+                        <th><?php esc_html_e( 'Time', 'daworks-outbound-mailer-for-ncloud' ); ?></th>
+                        <th><?php esc_html_e( 'Status', 'daworks-outbound-mailer-for-ncloud' ); ?></th>
+                        <th><?php esc_html_e( 'To', 'daworks-outbound-mailer-for-ncloud' ); ?></th>
+                        <th><?php esc_html_e( 'Subject', 'daworks-outbound-mailer-for-ncloud' ); ?></th>
+                        <th><?php esc_html_e( 'Details', 'daworks-outbound-mailer-for-ncloud' ); ?></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -328,9 +328,9 @@ class Settings {
                             <td><?php echo esc_html( $log['time'] ?? '' ); ?></td>
                             <td>
                                 <?php if ( 'success' === ( $log['status'] ?? '' ) ) : ?>
-                                    <span class="ncloud-status-success">✓ <?php esc_html_e( 'Sent', 'ncloud-outbound-mailer' ); ?></span>
+                                    <span class="ncloud-status-success">✓ <?php esc_html_e( 'Sent', 'daworks-outbound-mailer-for-ncloud' ); ?></span>
                                 <?php else : ?>
-                                    <span class="ncloud-status-error">✗ <?php esc_html_e( 'Failed', 'ncloud-outbound-mailer' ); ?></span>
+                                    <span class="ncloud-status-error">✗ <?php esc_html_e( 'Failed', 'daworks-outbound-mailer-for-ncloud' ); ?></span>
                                 <?php endif; ?>
                             </td>
                             <td><?php echo esc_html( implode( ', ', (array) ( $log['to'] ?? array() ) ) ); ?></td>
@@ -354,9 +354,9 @@ class Settings {
      * Render section description.
      */
     public function render_section_description(): void {
-        echo '<p>' . esc_html__( 'Enter your Ncloud Cloud Outbound Mailer API credentials below.', 'ncloud-outbound-mailer' ) . '</p>';
+        echo '<p>' . esc_html__( 'Enter your Ncloud Cloud Outbound Mailer API credentials below.', 'daworks-outbound-mailer-for-ncloud' ) . '</p>';
         echo '<p><a href="https://console.ncloud.com/mc/solution/outboundMailer" target="_blank">';
-        echo esc_html__( 'Get your API credentials from Ncloud Console', 'ncloud-outbound-mailer' );
+        echo esc_html__( 'Get your API credentials from Ncloud Console', 'daworks-outbound-mailer-for-ncloud' );
         echo '</a></p>';
     }
 
@@ -471,7 +471,7 @@ class Settings {
             add_settings_error(
                 'ncloud_mailer_messages',
                 'invalid_email',
-                __( 'Please enter a valid sender email address.', 'ncloud-outbound-mailer' ),
+                __( 'Please enter a valid sender email address.', 'daworks-outbound-mailer-for-ncloud' ),
                 'error'
             );
         }
@@ -486,7 +486,7 @@ class Settings {
         check_ajax_referer( 'ncloud_mailer_admin', 'nonce' );
 
         if ( ! current_user_can( 'manage_options' ) ) {
-            wp_send_json_error( __( 'Permission denied.', 'ncloud-outbound-mailer' ) );
+            wp_send_json_error( __( 'Permission denied.', 'daworks-outbound-mailer-for-ncloud' ) );
         }
 
         $this->api_client->refresh_settings();
@@ -506,13 +506,13 @@ class Settings {
         check_ajax_referer( 'ncloud_mailer_admin', 'nonce' );
 
         if ( ! current_user_can( 'manage_options' ) ) {
-            wp_send_json_error( __( 'Permission denied.', 'ncloud-outbound-mailer' ) );
+            wp_send_json_error( __( 'Permission denied.', 'daworks-outbound-mailer-for-ncloud' ) );
         }
 
         $to = isset( $_POST['email'] ) ? sanitize_email( wp_unslash( $_POST['email'] ) ) : '';
 
         if ( ! is_email( $to ) ) {
-            wp_send_json_error( __( 'Please enter a valid email address.', 'ncloud-outbound-mailer' ) );
+            wp_send_json_error( __( 'Please enter a valid email address.', 'daworks-outbound-mailer-for-ncloud' ) );
         }
 
         $this->api_client->refresh_settings();
@@ -520,13 +520,13 @@ class Settings {
         // Prepare test email.
         $subject = sprintf(
             /* translators: %s: Site name */
-            __( '[Test] Ncloud Mailer Test from %s', 'ncloud-outbound-mailer' ),
+            __( '[Test] Ncloud Mailer Test from %s', 'daworks-outbound-mailer-for-ncloud' ),
             get_bloginfo( 'name' )
         );
 
         $message = sprintf(
             /* translators: 1: Site name, 2: Current time */
-            __( "This is a test email from %1\$s.\n\nSent at: %2\$s\n\nIf you received this email, your Ncloud Mailer configuration is working correctly!", 'ncloud-outbound-mailer' ),
+            __( "This is a test email from %1\$s.\n\nSent at: %2\$s\n\nIf you received this email, your Ncloud Mailer configuration is working correctly!", 'daworks-outbound-mailer-for-ncloud' ),
             get_bloginfo( 'name' ),
             current_time( 'mysql' )
         );
@@ -535,9 +535,9 @@ class Settings {
         $result = wp_mail( $to, $subject, $message );
 
         if ( $result ) {
-            wp_send_json_success( __( 'Test email sent successfully!', 'ncloud-outbound-mailer' ) );
+            wp_send_json_success( __( 'Test email sent successfully!', 'daworks-outbound-mailer-for-ncloud' ) );
         } else {
-            wp_send_json_error( __( 'Failed to send test email. Check the logs for details.', 'ncloud-outbound-mailer' ) );
+            wp_send_json_error( __( 'Failed to send test email. Check the logs for details.', 'daworks-outbound-mailer-for-ncloud' ) );
         }
     }
 }

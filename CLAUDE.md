@@ -1,7 +1,9 @@
-# Ncloud Outbound Mailer - Project Instructions
+# Daworks Outbound Mailer for Ncloud - Project Instructions
 
 ## Project Overview
 WordPress plugin for sending emails through Ncloud Cloud Outbound Mailer API.
+
+**Note:** This plugin is not affiliated with NAVER Cloud Platform.
 
 ## Development Commands
 
@@ -19,7 +21,7 @@ WordPress plugin for sending emails through Ncloud Cloud Outbound Mailer API.
 ## WordPress.org SVN Deployment
 
 ### SVN Repository
-- URL: `https://plugins.svn.wordpress.org/ncloud-outbound-mailer`
+- URL: `https://plugins.svn.wordpress.org/daworks-outbound-mailer-for-ncloud`
 
 ### Credentials Setup
 SVN credentials are loaded from environment variables for security.
@@ -40,7 +42,7 @@ export SVN_PASSWORD='your_svn_password'
 
 ### SVN Structure
 ```
-ncloud-outbound-mailer/
+daworks-outbound-mailer-for-ncloud/
 ├── trunk/          # Latest development version
 ├── tags/           # Released versions (1.0.0, 1.0.1, etc.)
 │   └── 1.0.0/
@@ -63,7 +65,7 @@ ncloud-outbound-mailer/
 ### Manual SVN Commands
 ```bash
 # Checkout repository
-svn checkout https://plugins.svn.wordpress.org/ncloud-outbound-mailer svn-repo \
+svn checkout https://plugins.svn.wordpress.org/daworks-outbound-mailer-for-ncloud svn-repo \
     --username "$SVN_USERNAME" --password "$SVN_PASSWORD"
 
 # Update trunk

@@ -1,177 +1,173 @@
-# Korean translation for Ncloud Outbound Mailer
-# Copyright (C) 2024 Design Arete
-# This file is distributed under the GPL v2 or later.
-#
+# Copyright (C) 2024 Daworks
+# This file is distributed under the MIT License.
 msgid ""
 msgstr ""
-"Project-Id-Version: Ncloud Outbound Mailer 1.0.0\n"
+"Project-Id-Version: Daworks Outbound Mailer for Ncloud 1.0.3\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-01-01 00:00+0000\n"
-"PO-Revision-Date: 2024-01-01 00:00+0900\n"
-"Last-Translator: Design Arete <support@daworks.io>\n"
-"Language-Team: Korean <ko@li.org>\n"
-"Language: ko_KR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=1; plural=0;\n"
+"PO-Revision-Date: 2024-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
 
 #: includes/Admin/class-settings.php
 msgid "Ncloud Mailer Settings"
-msgstr "Ncloud 메일러 설정"
+msgstr ""
 
 #: includes/Admin/class-settings.php
 msgid "Ncloud Mailer"
-msgstr "Ncloud 메일러"
+msgstr ""
 
 #: includes/Admin/class-settings.php
 msgid "API Configuration"
-msgstr "API 설정"
+msgstr ""
 
 #: includes/Admin/class-settings.php
 msgid "Enable Ncloud Mailer"
-msgstr "Ncloud 메일러 활성화"
+msgstr ""
 
 #: includes/Admin/class-settings.php
 msgid "Enable sending emails through Ncloud Cloud Outbound Mailer."
-msgstr "Ncloud Cloud Outbound Mailer를 통해 이메일을 발송합니다."
+msgstr ""
 
 #: includes/Admin/class-settings.php
 msgid "Region"
-msgstr "리전"
+msgstr ""
 
 #: includes/Admin/class-settings.php
 msgid "Korea (KR)"
-msgstr "한국 (KR)"
+msgstr ""
 
 #: includes/Admin/class-settings.php
 msgid "Singapore (SGN)"
-msgstr "싱가포르 (SGN)"
+msgstr ""
 
 #: includes/Admin/class-settings.php
 msgid "Japan (JPN)"
-msgstr "일본 (JPN)"
+msgstr ""
 
 #: includes/Admin/class-settings.php
 msgid "Access Key"
-msgstr "Access Key"
+msgstr ""
 
 #: includes/Admin/class-settings.php
 msgid "Your Ncloud API Access Key."
-msgstr "Ncloud API Access Key를 입력하세요."
+msgstr ""
 
 #: includes/Admin/class-settings.php
 msgid "Secret Key"
-msgstr "Secret Key"
+msgstr ""
 
 #: includes/Admin/class-settings.php
 msgid "Your Ncloud API Secret Key."
-msgstr "Ncloud API Secret Key를 입력하세요."
+msgstr ""
 
 #: includes/Admin/class-settings.php
 msgid "Sender Settings"
-msgstr "발신자 설정"
+msgstr ""
 
 #: includes/Admin/class-settings.php
 msgid "Sender Email Address"
-msgstr "발신자 이메일 주소"
+msgstr ""
 
 #: includes/Admin/class-settings.php
 msgid "The email address that will appear as the sender."
-msgstr "발신자로 표시될 이메일 주소입니다."
+msgstr ""
 
 #: includes/Admin/class-settings.php
 msgid "Sender Name"
-msgstr "발신자 이름"
+msgstr ""
 
 #: includes/Admin/class-settings.php
 msgid "The name that will appear as the sender."
-msgstr "발신자로 표시될 이름입니다."
+msgstr ""
 
 #: includes/Admin/class-settings.php
 msgid "Save Settings"
-msgstr "설정 저장"
+msgstr ""
 
 #: includes/Admin/class-settings.php
 msgid "Test Connection & Email"
-msgstr "연결 테스트 및 이메일"
+msgstr ""
 
 #: includes/Admin/class-settings.php
 msgid "API Connection Test"
-msgstr "API 연결 테스트"
+msgstr ""
 
 #: includes/Admin/class-settings.php
 msgid "Test Connection"
-msgstr "연결 테스트"
+msgstr ""
 
 #: includes/Admin/class-settings.php
 msgid "Send Test Email"
-msgstr "테스트 이메일 발송"
+msgstr ""
 
 #: includes/Admin/class-settings.php
 msgid "Enter test email address"
-msgstr "테스트 이메일 주소 입력"
+msgstr ""
 
 #: includes/Admin/class-settings.php
 msgid "Recent Email Logs"
-msgstr "최근 이메일 로그"
+msgstr ""
 
 #: includes/Admin/class-settings.php
 msgid "No email logs yet."
-msgstr "이메일 로그가 없습니다."
+msgstr ""
 
 #: includes/Admin/class-settings.php
 msgid "Time"
-msgstr "시간"
+msgstr ""
 
 #: includes/Admin/class-settings.php
 msgid "Status"
-msgstr "상태"
+msgstr ""
 
 #: includes/Admin/class-settings.php
 msgid "To"
-msgstr "수신자"
+msgstr ""
 
 #: includes/Admin/class-settings.php
 msgid "Subject"
-msgstr "제목"
+msgstr ""
 
 #: includes/Admin/class-settings.php
 msgid "Details"
-msgstr "상세"
+msgstr ""
 
 #: includes/Admin/class-settings.php
 msgid "Sent"
-msgstr "발송 완료"
+msgstr ""
 
 #: includes/Admin/class-settings.php
 msgid "Failed"
-msgstr "발송 실패"
+msgstr ""
 
 #: includes/API/class-client.php
 msgid "Ncloud Mailer is not properly configured."
-msgstr "Ncloud 메일러가 올바르게 설정되지 않았습니다."
+msgstr ""
 
 #: includes/API/class-client.php
 msgid "Unknown error occurred."
-msgstr "알 수 없는 오류가 발생했습니다."
+msgstr ""
 
 #: includes/API/class-client.php
 msgid "API credentials are not configured."
-msgstr "API 인증 정보가 설정되지 않았습니다."
+msgstr ""
 
 #: includes/API/class-client.php
 msgid "API connection successful."
-msgstr "API 연결에 성공했습니다."
+msgstr ""
 
 #: includes/API/class-client.php
 msgid "API connection failed."
-msgstr "API 연결에 실패했습니다."
+msgstr ""
 
 #: includes/Admin/class-settings.php
 msgid "Enter your Ncloud Cloud Outbound Mailer API credentials below."
-msgstr "아래에 Ncloud Cloud Outbound Mailer API 인증 정보를 입력하세요."
+msgstr ""
 
 #: includes/Admin/class-settings.php
 msgid "Get your API credentials from Ncloud Console"
-msgstr "Ncloud 콘솔에서 API 인증 정보를 확인하세요"
+msgstr ""

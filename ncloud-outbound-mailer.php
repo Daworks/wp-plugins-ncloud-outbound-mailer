@@ -1,20 +1,20 @@
 <?php
 /**
- * Plugin Name: Ncloud Outbound Mailer
- * Plugin URI: https://wordpress.org/plugins/ncloud-outbound-mailer/
- * Description: Send WordPress emails through Ncloud Cloud Outbound Mailer API
- * Version: 1.0.2
+ * Plugin Name: Daworks Outbound Mailer for Ncloud
+ * Plugin URI: https://wordpress.org/plugins/daworks-outbound-mailer-for-ncloud/
+ * Description: Send WordPress emails through Ncloud Cloud Outbound Mailer API. Not affiliated with NAVER Cloud Platform.
+ * Version: 1.0.3
  * Requires at least: 5.6
  * Requires PHP: 7.4
- * Author: Design Arete
+ * Author: Daworks
  * Author URI: https://daworks.io
  * License: MIT
  * License URI: https://opensource.org/licenses/MIT
- * Text Domain: ncloud-outbound-mailer
+ * Text Domain: daworks-outbound-mailer-for-ncloud
  * Domain Path: /languages
  *
- * @package NcloudMailer
- * @copyright 2024 Design Arete
+ * @package DaworksNcloudMailer
+ * @copyright 2024 Daworks
  */
 
 namespace NcloudMailer;
@@ -25,7 +25,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 // Plugin constants.
-define( 'NCLOUD_MAILER_VERSION', '1.0.2' );
+define( 'NCLOUD_MAILER_VERSION', '1.0.3' );
 define( 'NCLOUD_MAILER_PLUGIN_FILE', __FILE__ );
 define( 'NCLOUD_MAILER_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
 define( 'NCLOUD_MAILER_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
@@ -135,13 +135,6 @@ final class Plugin {
      * Initialize the plugin.
      */
     public function init(): void {
-        // Load text domain for translations.
-        load_plugin_textdomain(
-            'ncloud-outbound-mailer',
-            false,
-            dirname( NCLOUD_MAILER_PLUGIN_BASENAME ) . '/languages'
-        );
-
         // Initialize API client.
         $this->api_client = new API\Client();
 

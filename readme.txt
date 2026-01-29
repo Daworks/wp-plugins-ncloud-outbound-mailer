@@ -1,21 +1,25 @@
-=== Ncloud Outbound Mailer ===
-Contributors: designarete
+=== Daworks Outbound Mailer for Ncloud ===
+Contributors: designarete, dhlee7
 Donate link: https://daworks.io
 Tags: email, smtp, ncloud, naver cloud, mail
 Requires at least: 5.6
 Tested up to: 6.9
 Requires PHP: 7.4
-Stable tag: 1.0.2
+Stable tag: 1.0.3
 License: MIT
 License URI: https://opensource.org/licenses/MIT
 
 Send WordPress emails through Ncloud Cloud Outbound Mailer API.
 
-Developed by [Design Arete](https://daworks.io) - Professional WordPress Development.
+Developed by [Daworks](https://daworks.io) - Professional WordPress Development.
+
+This plugin is not affiliated with, endorsed by, or officially connected to NAVER Cloud Platform.
 
 == Description ==
 
-Ncloud Outbound Mailer allows you to send all WordPress emails through Ncloud Cloud Outbound Mailer API instead of the default PHP mail function.
+Daworks Outbound Mailer for Ncloud allows you to send all WordPress emails through Ncloud Cloud Outbound Mailer API instead of the default PHP mail function.
+
+**Note:** This plugin is developed by Daworks and is not affiliated with, endorsed by, or officially connected to NAVER Cloud Platform or Ncloud.
 
 = Features =
 
@@ -112,9 +116,9 @@ Note: DNS propagation may take up to 24-48 hours. The verification status will s
 
 == Installation ==
 
-1. Upload the `ncloud-outbound-mailer` folder to the `/wp-content/plugins/` directory
+1. Upload the `daworks-outbound-mailer-for-ncloud` folder to the `/wp-content/plugins/` directory
 2. Activate the plugin through the 'Plugins' menu in WordPress
-3. Go to Settings > Ncloud Mailer to configure the plugin
+3. Go to Settings > Daworks Mailer to configure the plugin
 
 == Frequently Asked Questions ==
 
@@ -140,7 +144,53 @@ By default, if the Ncloud API fails, the email will not be sent. You can use the
 2. Test connection and send test email
 3. Email logs showing recent send history
 
+== External Services ==
+
+This plugin connects to **NAVER Cloud Platform's Cloud Outbound Mailer API** to send emails.
+
+= What is this service? =
+
+NAVER Cloud Platform Cloud Outbound Mailer is an enterprise email delivery service provided by NAVER Cloud Corp. This plugin uses their API to send emails from your WordPress site.
+
+= When is data sent? =
+
+Data is transmitted to the Ncloud API server every time WordPress sends an email through this plugin. This includes:
+
+* User registration emails
+* Password reset emails
+* Contact form submissions (if using plugins like Contact Form 7)
+* WooCommerce order notifications
+* Any other emails sent via WordPress wp_mail() function
+
+= What data is sent? =
+
+* Sender email address and name (configured in plugin settings)
+* Recipient email addresses (To, CC, BCC)
+* Email subject and body content
+* Reply-To address (if set)
+
+= API Endpoints =
+
+Depending on your selected region, the plugin connects to:
+
+* Korea: `https://mail.apigw.ntruss.com/api/v1`
+* Singapore: `https://mail.apigw.ntruss.com/api/v1-sgn`
+* Japan: `https://mail.apigw.ntruss.com/api/v1-jpn`
+
+= Service Links =
+
+* [Cloud Outbound Mailer Service Page](https://www.ncloud.com/product/applicationService/cloudOutboundMailer)
+* [NAVER Cloud Terms of Service](https://www.ncloud.com/policy/terms/service)
+* [NAVER Cloud Privacy Policy](https://www.ncloud.com/policy/privacy/privacy)
+* [API Documentation](https://api.ncloud-docs.com/docs/ai-application-service-cloudoutboundmailer)
+
 == Changelog ==
+
+= 1.0.3 =
+* Rename plugin to "Daworks Outbound Mailer for Ncloud" for WordPress.org compliance
+* Add External Services documentation section
+* Add disclaimer about third-party service affiliation
+* Update text domain to match new slug
 
 = 1.0.2 =
 * Change license to MIT

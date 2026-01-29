@@ -122,7 +122,7 @@ class Client {
         if ( ! $this->is_enabled() ) {
             return new WP_Error(
                 'ncloud_mailer_not_configured',
-                __( 'Ncloud Mailer is not properly configured.', 'ncloud-outbound-mailer' )
+                __( 'Ncloud Mailer is not properly configured.', 'daworks-outbound-mailer-for-ncloud' )
             );
         }
 
@@ -179,7 +179,7 @@ class Client {
 
         if ( 201 !== $response_code && 200 !== $response_code ) {
             // Ncloud API error format: {"error":{"code":"77102","message":"..."}}
-            $error_message = $result['error']['message'] ?? __( 'Unknown error occurred.', 'ncloud-outbound-mailer' );
+            $error_message = $result['error']['message'] ?? __( 'Unknown error occurred.', 'daworks-outbound-mailer-for-ncloud' );
             $error_code    = $result['error']['code'] ?? 'ncloud_api_error';
 
             $error = new WP_Error( $error_code, $error_message, $result );
@@ -291,7 +291,7 @@ class Client {
         if ( empty( $this->settings['access_key'] ) || empty( $this->settings['secret_key'] ) ) {
             return new WP_Error(
                 'missing_credentials',
-                __( 'API credentials are not configured.', 'ncloud-outbound-mailer' )
+                __( 'API credentials are not configured.', 'daworks-outbound-mailer-for-ncloud' )
             );
         }
 
@@ -340,7 +340,7 @@ class Client {
             if ( in_array( $error_code, array( '77102', '77103' ), true ) ) {
                 return array(
                     'success' => true,
-                    'message' => __( 'API connection successful.', 'ncloud-outbound-mailer' ),
+                    'message' => __( 'API connection successful.', 'daworks-outbound-mailer-for-ncloud' ),
                 );
             }
         }
@@ -349,14 +349,14 @@ class Client {
         if ( 401 === $response_code || 403 === $response_code || 404 === $response_code ) {
             return new WP_Error(
                 'auth_failed',
-                __( 'API authentication failed. Please check your credentials.', 'ncloud-outbound-mailer' ),
+                __( 'API authentication failed. Please check your credentials.', 'daworks-outbound-mailer-for-ncloud' ),
                 $result
             );
         }
 
         return new WP_Error(
             'api_error',
-            $result['error']['message'] ?? __( 'API connection failed.', 'ncloud-outbound-mailer' ),
+            $result['error']['message'] ?? __( 'API connection failed.', 'daworks-outbound-mailer-for-ncloud' ),
             $result
         );
     }

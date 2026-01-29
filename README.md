@@ -1,11 +1,11 @@
-# Ncloud Outbound Mailer for WordPress
+# Daworks Outbound Mailer for Ncloud
 
-[![WordPress Plugin](https://img.shields.io/badge/WordPress.org-Plugin-blue.svg)](https://wordpress.org/plugins/ncloud-outbound-mailer/)
+[![WordPress Plugin](https://img.shields.io/badge/WordPress.org-Plugin-blue.svg)](https://wordpress.org/plugins/daworks-outbound-mailer-for-ncloud/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![PHP Version](https://img.shields.io/badge/PHP-7.4%2B-purple.svg)](https://php.net)
 [![WordPress](https://img.shields.io/badge/WordPress-5.6%2B-blue.svg)](https://wordpress.org)
 
-**[WordPress.org Plugin Page](https://wordpress.org/plugins/ncloud-outbound-mailer/)** | [GitHub](https://github.com/Daworks/wp-plugins-ncloud-outbound-mailer)
+**[WordPress.org Plugin Page](https://wordpress.org/plugins/daworks-outbound-mailer-for-ncloud/)** | [GitHub](https://github.com/Daworks/wp-plugins-ncloud-outbound-mailer)
 
 [English](#english) | [한국어](#한국어)
 
@@ -15,7 +15,9 @@
 
 Send WordPress emails through Ncloud Cloud Outbound Mailer API.
 
-**Developed by [Design Arete](https://daworks.io)** - Professional WordPress Development
+**Developed by [Daworks](https://daworks.io)** - Professional WordPress Development
+
+> **Note:** This plugin is not affiliated with, endorsed by, or officially connected to NAVER Cloud Platform.
 
 ### Features
 
@@ -36,9 +38,9 @@ Send WordPress emails through Ncloud Cloud Outbound Mailer API.
 
 ### Installation
 
-1. Upload the `ncloud-outbound-mailer` folder to `/wp-content/plugins/`
+1. Upload the `daworks-outbound-mailer-for-ncloud` folder to `/wp-content/plugins/`
 2. Activate the plugin through the 'Plugins' menu
-3. Go to **Settings > Ncloud Mailer** to configure
+3. Go to **Settings > Daworks Mailer** to configure
 
 ### Setup
 
@@ -95,7 +97,34 @@ DMARC provides instructions for handling authentication failures:
 
 > **Note**: DNS propagation may take 24-48 hours. Status will show "인증 완료" when verified.
 
+### External Services
+
+This plugin connects to **NAVER Cloud Platform's Cloud Outbound Mailer API** to send emails.
+
+#### What data is sent?
+- Sender email address and name
+- Recipient email addresses (To, CC, BCC)
+- Email subject and body content
+- Reply-To address (if set)
+
+#### API Endpoints
+- Korea: `https://mail.apigw.ntruss.com/api/v1`
+- Singapore: `https://mail.apigw.ntruss.com/api/v1-sgn`
+- Japan: `https://mail.apigw.ntruss.com/api/v1-jpn`
+
+#### Service Links
+- [Cloud Outbound Mailer Service Page](https://www.ncloud.com/product/applicationService/cloudOutboundMailer)
+- [NAVER Cloud Terms of Service](https://www.ncloud.com/policy/terms/service)
+- [NAVER Cloud Privacy Policy](https://www.ncloud.com/policy/privacy/privacy)
+- [API Documentation](https://api.ncloud-docs.com/docs/ai-application-service-cloudoutboundmailer)
+
 ### Changelog
+
+#### 1.0.3
+- Rename plugin to "Daworks Outbound Mailer for Ncloud" for WordPress.org compliance
+- Add External Services documentation section
+- Add disclaimer about third-party service affiliation
+- Update text domain to match new slug
 
 #### 1.0.2
 - Change license to MIT
@@ -120,6 +149,9 @@ DMARC provides instructions for handling authentication failures:
 
 Ncloud Cloud Outbound Mailer API를 통해 WordPress 이메일을 발송하는 플러그인입니다.
 
+**[Daworks](https://daworks.io)** 개발 - Professional WordPress Development
+
+> **참고:** 이 플러그인은 NAVER Cloud Platform과 제휴, 보증 또는 공식적으로 연결되어 있지 않습니다.
 
 ### 주요 기능
 
@@ -140,9 +172,9 @@ Ncloud Cloud Outbound Mailer API를 통해 WordPress 이메일을 발송하는 �
 
 ### 설치 방법
 
-1. `ncloud-outbound-mailer` 폴더를 `/wp-content/plugins/`에 업로드
+1. `daworks-outbound-mailer-for-ncloud` 폴더를 `/wp-content/plugins/`에 업로드
 2. '플러그인' 메뉴에서 플러그인 활성화
-3. **설정 > Ncloud Mailer**에서 설정
+3. **설정 > Daworks Mailer**에서 설정
 
 ### 설정 방법
 
@@ -211,6 +243,27 @@ DMARC는 인증 실패 시 이메일 처리 방법을 지정합니다:
 | TXT | @ | `v=spf1 include:_spfblocka.ncloud.com ~all` |
 | TXT | ncloud._domainkey | (DKIM 공개키) |
 | TXT | _dmarc | `v=DMARC1; p=none; rua=mailto:you@domain.com` |
+
+### 외부 서비스 연동
+
+이 플러그인은 이메일 발송을 위해 **NAVER Cloud Platform의 Cloud Outbound Mailer API**에 연결됩니다.
+
+#### 전송되는 데이터
+- 발신자 이메일 주소 및 이름
+- 수신자 이메일 주소 (To, CC, BCC)
+- 이메일 제목 및 본문 내용
+- Reply-To 주소 (설정된 경우)
+
+#### API 엔드포인트
+- 한국: `https://mail.apigw.ntruss.com/api/v1`
+- 싱가포르: `https://mail.apigw.ntruss.com/api/v1-sgn`
+- 일본: `https://mail.apigw.ntruss.com/api/v1-jpn`
+
+#### 서비스 링크
+- [Cloud Outbound Mailer 서비스 페이지](https://www.ncloud.com/product/applicationService/cloudOutboundMailer)
+- [NAVER Cloud 이용약관](https://www.ncloud.com/policy/terms/service)
+- [NAVER Cloud 개인정보처리방침](https://www.ncloud.com/policy/privacy/privacy)
+- [API 문서](https://api.ncloud-docs.com/docs/ai-application-service-cloudoutboundmailer)
 
 ### 스크린샷
 
@@ -283,6 +336,12 @@ add_filter( 'ncloud_mailer_enable_logging', '__return_false' );
 
 ### 변경 이력
 
+#### 1.0.3
+- WordPress.org 규정 준수를 위해 플러그인 이름을 "Daworks Outbound Mailer for Ncloud"로 변경
+- 외부 서비스 연동 문서 섹션 추가
+- 서드파티 서비스 비제휴 면책 조항 추가
+- 새 슬러그에 맞게 text domain 업데이트
+
 #### 1.0.2
 - MIT 라이선스로 변경
 - LICENSE 파일 추가
@@ -308,8 +367,8 @@ MIT License
 
 ## Author / 개발자
 
-**Design Arete**
+**Daworks**
 - Website: [https://daworks.io](https://daworks.io)
 - GitHub: [https://github.com/Daworks](https://github.com/Daworks)
 
-Copyright (c) 2024 Design Arete. All rights reserved.
+Copyright (c) 2024 Daworks. All rights reserved.

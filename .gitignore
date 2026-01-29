@@ -1,5 +1,6 @@
 .claude
 .claudedocs
+CLAUDE.md
 .env
 .idea/
 vendor/

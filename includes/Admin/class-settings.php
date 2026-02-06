@@ -456,7 +456,8 @@ class Settings {
         $sanitized['enabled']        = ! empty( $input['enabled'] );
         $sanitized['region']         = sanitize_text_field( $input['region'] ?? 'KR' );
         $sanitized['access_key']     = sanitize_text_field( $input['access_key'] ?? '' );
-        $sanitized['secret_key']     = sanitize_text_field( $input['secret_key'] ?? '' );
+        // Store secret_key raw to preserve API credentials (may contain special characters).
+        $sanitized['secret_key']     = $this->sanitize_api_secret( $input['secret_key'] ?? '' );
         $sanitized['sender_address'] = sanitize_email( $input['sender_address'] ?? '' );
         $sanitized['sender_name']    = sanitize_text_field( $input['sender_name'] ?? '' );
 
@@ -477,6 +478,27 @@ class Settings {
         }
 
         return $sanitized;
+    }
+
+    /**
+     * Sanitize API secret key.
+     *
+     * API secrets may contain special characters and should not be altered by
+     * sanitize_text_field which can change password-like values.
+     * We only remove slashes and trim whitespace/CRLF.
+     *
+     * @param string $secret Raw secret key input.
+     * @return string Sanitized secret key.
+     */
+    private function sanitize_api_secret( string $secret ): string {
+        // Remove WordPress slashes.
+        $secret = wp_unslash( $secret );
+
+        // Trim whitespace and remove CR/LF characters that may be accidentally added.
+        $secret = trim( $secret );
+        $secret = str_replace( array( "\r", "\n" ), '', $secret );
+
+        return $secret;
     }
 
     /**

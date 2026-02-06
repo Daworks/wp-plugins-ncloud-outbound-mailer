@@ -15,6 +15,10 @@
 .idea
 .vscode
 .editorconfig
+.distignore
+.env
+.env.example
+CLAUDE.md
 
 # Build tools
 node_modules
@@ -34,8 +38,12 @@ codeception.yml
 .circleci
 .gitlab-ci.yml
 
-# Package managers (dev)
+# Composer / vendor (no production dependencies)
+vendor
+composer.json
 composer.lock
+
+# Package managers
 package.json
 package-lock.json
 yarn.lock
@@ -44,10 +52,15 @@ yarn.lock
 docs
 CONTRIBUTING.md
 CHANGELOG.md
+README.md
 
 # OS files
 .DS_Store
 Thumbs.db
+
+# WordPress.org directory assets (uploaded separately via SVN)
+assets
+.assets
 
 # Misc
 *.log

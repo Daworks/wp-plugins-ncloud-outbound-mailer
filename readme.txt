@@ -144,45 +144,39 @@ By default, if the Ncloud API fails, the email will not be sent. You can use the
 2. Test connection and send test email
 3. Email logs showing recent send history
 
-== External Services ==
+== External services ==
 
-This plugin connects to **NAVER Cloud Platform's Cloud Outbound Mailer API** to send emails.
+This plugin relies on NAVER Cloud Platform's Cloud Outbound Mailer API as a third-party external service to send emails. No emails can be sent without this service.
 
-= What is this service? =
+= NAVER Cloud Platform - Cloud Outbound Mailer =
 
-NAVER Cloud Platform Cloud Outbound Mailer is an enterprise email delivery service provided by NAVER Cloud Corp. This plugin uses their API to send emails from your WordPress site.
+**Service provider:** NAVER Cloud Corp.
+**Service website:** [https://www.ncloud.com/product/applicationService/cloudOutboundMailer](https://www.ncloud.com/product/applicationService/cloudOutboundMailer)
+**Terms of Service:** [https://www.ncloud.com/policy/terms/service](https://www.ncloud.com/policy/terms/service)
+**Privacy Policy:** [https://www.ncloud.com/policy/privacy/privacy](https://www.ncloud.com/policy/privacy/privacy)
 
-= When is data sent? =
+**What this service does:**
+This plugin sends all WordPress emails (user registration, password resets, contact form submissions, WooCommerce notifications, and any email sent via wp_mail()) through the NAVER Cloud Platform Cloud Outbound Mailer API instead of the default PHP mail function.
 
-Data is transmitted to the Ncloud API server every time WordPress sends an email through this plugin. This includes:
-
-* User registration emails
-* Password reset emails
-* Contact form submissions (if using plugins like Contact Form 7)
-* WooCommerce order notifications
-* Any other emails sent via WordPress wp_mail() function
-
-= What data is sent? =
+**What data is sent to this service:**
+Every time WordPress triggers an email, the following data is transmitted to the NAVER Cloud Platform API:
 
 * Sender email address and name (configured in plugin settings)
 * Recipient email addresses (To, CC, BCC)
-* Email subject and body content
-* Reply-To address (if set)
+* Email subject line
+* Email body content (HTML or plain text)
+* Reply-To address (if provided)
 
-= API Endpoints =
+**When data is sent:**
+Data is sent every time WordPress sends an email through the wp_mail() function while this plugin is enabled. This includes but is not limited to: user registration emails, password reset emails, comment notifications, plugin/theme update notifications, WooCommerce order emails, and Contact Form 7 submissions.
 
-Depending on your selected region, the plugin connects to:
+**API endpoints (hosted on ntruss.com, which is NAVER Cloud Platform's API gateway domain):**
 
-* Korea: `https://mail.apigw.ntruss.com/api/v1`
-* Singapore: `https://mail.apigw.ntruss.com/api/v1-sgn`
-* Japan: `https://mail.apigw.ntruss.com/api/v1-jpn`
+* Korea: [https://mail.apigw.ntruss.com/api/v1](https://mail.apigw.ntruss.com/api/v1)
+* Singapore: [https://mail.apigw.ntruss.com/api/v1-sgn](https://mail.apigw.ntruss.com/api/v1-sgn)
+* Japan: [https://mail.apigw.ntruss.com/api/v1-jpn](https://mail.apigw.ntruss.com/api/v1-jpn)
 
-= Service Links =
-
-* [Cloud Outbound Mailer Service Page](https://www.ncloud.com/product/applicationService/cloudOutboundMailer)
-* [NAVER Cloud Terms of Service](https://www.ncloud.com/policy/terms/service)
-* [NAVER Cloud Privacy Policy](https://www.ncloud.com/policy/privacy/privacy)
-* [API Documentation](https://api.ncloud-docs.com/docs/ai-application-service-cloudoutboundmailer)
+By using this plugin, you agree to NAVER Cloud Platform's [Terms of Service](https://www.ncloud.com/policy/terms/service) and [Privacy Policy](https://www.ncloud.com/policy/privacy/privacy).
 
 == Changelog ==
 

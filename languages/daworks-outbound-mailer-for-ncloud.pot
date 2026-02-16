@@ -4,13 +4,17 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Daworks Outbound Mailer for Ncloud 1.0.3\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-01-01 00:00+0000\n"
+"POT-Creation-Date: 2026-02-16 00:00+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2024-MO-DA HO:MI+ZONE\n"
+"PO-Revision-Date: 2026-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
+
+#. Plugin Name
+msgid "Daworks Outbound Mailer for Ncloud"
+msgstr ""
 
 #: includes/Admin/class-settings.php
 msgid "Ncloud Mailer Settings"
@@ -89,6 +93,18 @@ msgid "Save Settings"
 msgstr ""
 
 #: includes/Admin/class-settings.php
+msgid "Settings Saved"
+msgstr ""
+
+#: includes/Admin/class-settings.php
+msgid "Enter your Ncloud Cloud Outbound Mailer API credentials below."
+msgstr ""
+
+#: includes/Admin/class-settings.php
+msgid "Get your API credentials from Ncloud Console"
+msgstr ""
+
+#: includes/Admin/class-settings.php
 msgid "Test Connection & Email"
 msgstr ""
 
@@ -106,6 +122,30 @@ msgstr ""
 
 #: includes/Admin/class-settings.php
 msgid "Enter test email address"
+msgstr ""
+
+#: includes/Admin/class-settings.php
+msgid "Testing..."
+msgstr ""
+
+#: includes/Admin/class-settings.php
+msgid "Sending..."
+msgstr ""
+
+#: includes/Admin/class-settings.php
+msgid "Success!"
+msgstr ""
+
+#: includes/Admin/class-settings.php
+msgid "Error:"
+msgstr ""
+
+#: includes/Admin/class-settings.php
+msgid "Test email sent successfully!"
+msgstr ""
+
+#: includes/Admin/class-settings.php
+msgid "Please enter a test email address."
 msgstr ""
 
 #: includes/Admin/class-settings.php
@@ -144,6 +184,36 @@ msgstr ""
 msgid "Failed"
 msgstr ""
 
+#: includes/Admin/class-settings.php
+msgid "Please enter a valid sender email address."
+msgstr ""
+
+#: includes/Admin/class-settings.php
+msgid "Permission denied."
+msgstr ""
+
+#: includes/Admin/class-settings.php
+msgid "Please enter a valid email address."
+msgstr ""
+
+#: includes/Admin/class-settings.php
+msgid "[Test] Ncloud Mailer Test from %s"
+msgstr ""
+
+#: includes/Admin/class-settings.php
+msgid ""
+"This is a test email from %1$s.\n"
+"\n"
+"Sent at: %2$s\n"
+"\n"
+"If you received this email, your Ncloud Mailer configuration is working "
+"correctly!"
+msgstr ""
+
+#: includes/Admin/class-settings.php
+msgid "Failed to send test email. Check the logs for details."
+msgstr ""
+
 #: includes/API/class-client.php
 msgid "Ncloud Mailer is not properly configured."
 msgstr ""
@@ -161,13 +231,9 @@ msgid "API connection successful."
 msgstr ""
 
 #: includes/API/class-client.php
+msgid "API authentication failed. Please check your credentials."
+msgstr ""
+
+#: includes/API/class-client.php
 msgid "API connection failed."
-msgstr ""
-
-#: includes/Admin/class-settings.php
-msgid "Enter your Ncloud Cloud Outbound Mailer API credentials below."
-msgstr ""
-
-#: includes/Admin/class-settings.php
-msgid "Get your API credentials from Ncloud Console"
 msgstr ""

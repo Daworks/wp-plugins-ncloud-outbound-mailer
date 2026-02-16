@@ -1,5 +1,5 @@
 === Daworks Outbound Mailer for Ncloud ===
-Contributors: designarete, dhlee7
+Contributors: dhlee7
 Donate link: https://daworks.io
 Tags: email, smtp, ncloud, naver cloud, mail
 Requires at least: 5.6
@@ -11,13 +11,11 @@ License URI: https://opensource.org/licenses/MIT
 
 Send WordPress emails through Ncloud Cloud Outbound Mailer API.
 
-Developed by [Daworks](https://daworks.io) - Professional WordPress Development.
-
-This plugin is not affiliated with, endorsed by, or officially connected to NAVER Cloud Platform.
-
 == Description ==
 
 Daworks Outbound Mailer for Ncloud allows you to send all WordPress emails through Ncloud Cloud Outbound Mailer API instead of the default PHP mail function.
+
+Developed by [Daworks](https://daworks.io) - Professional WordPress Development.
 
 **Note:** This plugin is developed by Daworks and is not affiliated with, endorsed by, or officially connected to NAVER Cloud Platform or Ncloud.
 

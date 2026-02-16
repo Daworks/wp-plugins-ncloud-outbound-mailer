@@ -25,8 +25,9 @@
   </g>
 
   <!-- Text -->
-  <text x="230" y="100" font-family="Arial, Helvetica, sans-serif" font-size="38" font-weight="bold" fill="#ffffff">Ncloud Outbound Mailer</text>
-  <text x="230" y="140" font-family="Arial, Helvetica, sans-serif" font-size="18" fill="#ffffff" opacity="0.95">Send WordPress emails through Ncloud Cloud Outbound Mailer API</text>
+  <text x="230" y="90" font-family="Arial, Helvetica, sans-serif" font-size="32" font-weight="bold" fill="#ffffff">Daworks Outbound Mailer</text>
+  <text x="230" y="125" font-family="Arial, Helvetica, sans-serif" font-size="22" fill="#ffffff" opacity="0.85">for Ncloud</text>
+  <text x="230" y="155" font-family="Arial, Helvetica, sans-serif" font-size="15" fill="#ffffff" opacity="0.8">Send WordPress emails through Ncloud Cloud Outbound Mailer API</text>
 
   <!-- Feature tags -->
   <g transform="translate(230, 165)" font-family="Arial, sans-serif" font-size="13" fill="#ffffff">
